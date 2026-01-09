@@ -16,7 +16,7 @@ def login_to_hrm(page):
     login_page = LoginPage(page)
     login_page.navigate(url)
     login_page.login(usr_name, usr_pass)
-    DashboardPage(page).assert_dashboard_loaded()
+    DashboardPage(page).verify_dashboard_loaded()
 
 @when("user clicks on user profile dropdown")
 def click_on_usr_profile(page):

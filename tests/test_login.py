@@ -37,7 +37,7 @@ def verify_dashboard_url(page):
 
 @then("user should see Dashboard")
 def verify_dashboard_visible(page):
-    DashboardPage(page).assert_dashboard_loaded()
+    DashboardPage(page).verify_dashboard_loaded()
 
 
 @then(parsers.parse('user should see error message "{error_message}"'))
