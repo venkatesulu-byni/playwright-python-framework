@@ -1,8 +1,4 @@
 import time
-from idlelib.search import SearchDialog
-from re import search
-
-from mako.testing.assertions import expect_raises_message_with_proper_context
 from playwright.sync_api import expect
 
 from pages.base_page import BasePage
