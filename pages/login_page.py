@@ -15,6 +15,7 @@ class LoginPage(BasePage):
         self.forgot_password_link = page.get_by_role("link", name="Forgot your password?")
         self.required_errors = page.get_by_text("Required")
         self.forgot_pass = page.get_by_text("Forgot your password?")
+        self.username_error = ''
 
     def enter_username(self, username: str):
         self.username_input.fill(username)
@@ -39,10 +40,14 @@ class LoginPage(BasePage):
         assert self.error_message.text_content() == error_msg
 
     def verify_username_required(self):
+        self.username_error = True
         self.expect_visible(self.required_errors.nth(0))
 
     def verify_password_required(self):
-        self.expect_visible(self.required_errors.nth(1))
+        if self.username_error:
+            self.expect_visible(self.required_errors.nth(1))
+        else:
+            self.expect_visible(self.required_errors.nth(0))
 
     def verify_login_page_loaded(self):
         expect(self.login_banner).to_be_visible()
